@@ -54,13 +54,17 @@
     }
     strong {
       font-family: linjaPona;
-      font: 40px linjaPona;
+      font: 30px linjaPona;
     }
     #toggleScriptBtn {
       position: fixed;
       bottom: 20px; /* Adjust the distance from the bottom as needed */
       right: 20px; /* Adjust the distance from the left as needed */
       z-index: 999; /* Ensure it stays above other content */
+    }
+    .font2 {
+      font-family: Arial;
+      font: 30px Arial;
     }
   </style>
 </head>
@@ -175,7 +179,6 @@
 <li><strong>tan</strong> - reason, cause; because</li>
 <li><strong>taso</strong> - but, only</li>
 <li><strong>tawa</strong> - to go to, move, travel, transport; to walk, ride, drive</li>
-<li><strong>te</strong> - and</li>
 <li><strong>telo</strong> - water, liquid, juice, sauce, beverage</li>
 <li><strong>tenpo</strong> - time; period of time; situation</li>
 <li><strong>toki</strong> - language, to speak, to talk</li>
@@ -195,7 +198,9 @@
     <p><a href="index.html">Back to Main Page</a></p>
   </div>
   <script>
-
+  linjaPona() {
+    document.setAttribute("strong", "font2")
+  }
   </script>
 </body>
 </html>
