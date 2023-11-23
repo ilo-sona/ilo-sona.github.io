@@ -46,11 +46,16 @@
       color: #eee;
       text-decoration: none;
     }
+    .sitelenPona {
+  font-family: "Noto Sans Symbols", "Segoe UI Symbol", "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", "Segoe UI Symbol Emoji", "Twemoji", "Symbola", "EmojiOne";
+  /* Update the font-family to a font that supports Sitelen Pona glyphs */
+  /* You can also define other styling changes for Sitelen Pona here */
+}
   </style>
 </head>
 <body>
   <header>
-    <h1>ilo-sona: Toki Pona Dictionary</h1>
+    <h1>ilo sona: Toki Pona Dictionary</h1>
   </header>
   <div class="container">
     <h2>Toki Pona Dictionary</h2>
@@ -173,8 +178,22 @@
 <li><strong>weka</strong> - away, absent, missing, to remove</li>
 <li><strong>wile</strong> - to want, need, wish, have to, must; to be necessary</li>
     </ul>
-    <p>Click on a word to learn more about its usage and meaning.</p>
+    <button id="toggleScriptBtn">Toggle Scripts</button>
     <p><a href="index.html">Back to Main Page</a></p>
   </div>
+  <script>
+    const toggleScriptBtn = document.getElementById('toggleScriptBtn');
+const wordsList = document.querySelectorAll('.tokiPonaWord'); // Update the class name accordingly
+
+toggleScriptBtn.addEventListener('click', function() {
+  wordsList.forEach(function(word) {
+    if (word.classList.contains('sitelenPona')) {
+      word.classList.remove('sitelenPona');
+    } else {
+      word.classList.add('sitelenPona');
+    }
+  });
+});
+  </script>
 </body>
 </html>
