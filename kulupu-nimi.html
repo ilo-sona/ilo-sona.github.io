@@ -263,8 +263,13 @@
       // Hide all items first
       item.style.display = 'none';
 
-      // Check if the item text exactly matches the search term or contains the reference "(see [toki pona word])"
-      if (itemText === searchTerm || itemText.includes('(see "' + searchTerm + '")')) {
+      // Check if the item text exactly matches the search term
+      if (itemText === searchTerm) {
+        item.style.display = 'block';
+      }
+
+      // Check if the item contains the search term within the HTML content
+      if (item.innerHTML.toLowerCase().includes('<strong>' + searchTerm + '</strong>')) {
         item.style.display = 'block';
       }
     });
