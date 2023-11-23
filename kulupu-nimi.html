@@ -71,6 +71,14 @@
   <div class="container">
     <h2>Toki Pona Dictionary</h2>
     <p>Explore the Toki Pona vocabulary:</p>
+     <header>
+    <h1>ilo sona: Toki Pona Dictionary</h1>
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search Toki Pona or English">
+      <button onclick="searchDictionary()" class="search-button">Search</button>
+    </div>
+  </header>
     <ul class="change-font">
       <div>
 <li><strong>a</strong> - (interjection) ah! ha! ooh! aw!</li>
@@ -213,7 +221,7 @@
     <p><a href="index.html">Back to Main Page</a></p>
   </div>
   <script>
-var fonts = ['Arial, sans-serif', 'linjaPona']; // Fonts to toggle
+    var fonts = ['Arial, sans-serif', 'linjaPona']; // Fonts to toggle
     var fontSizes = ['18px', '30px']; // Font sizes to toggle
     var fontIndex = 0;
     var sizeIndex = 0;
@@ -228,6 +236,21 @@ var fonts = ['Arial, sans-serif', 'linjaPona']; // Fonts to toggle
       // Toggle to the next font and size
       fontIndex = (fontIndex + 1) % fonts.length;
       sizeIndex = (sizeIndex + 1) % fontSizes.length;
+    }
+
+    // Function to handle search
+    function searchDictionary() {
+      var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      var listItems = document.querySelectorAll('.change-font li');
+      
+      for (var i = 0; i < listItems.length; i++) {
+        var itemText = listItems[i].textContent.toLowerCase();
+        if (itemText.includes(searchTerm)) {
+          listItems[i].style.display = 'block'; // Show matching items
+        } else {
+          listItems[i].style.display = 'none'; // Hide non-matching items
+        }
+      }
     }
   </script>
 </body>
