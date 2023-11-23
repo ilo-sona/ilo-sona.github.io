@@ -62,6 +62,22 @@
       right: 20px; /* Adjust the distance from the left as needed */
       z-index: 999; /* Ensure it stays above other content */
     }
+    
+    .search-bar {
+      margin-bottom: 20px;
+    }
+
+    .search-input {
+      padding: 8px;
+      width: 300px;
+      font-size: 16px;
+    }
+
+    .search-button {
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -70,10 +86,7 @@
   </header>
   <div class="container">
     <h2>Toki Pona Dictionary</h2>
-    <p>Explore the Toki Pona vocabulary:</p>
-     <header>
-    <h1>ilo sona: Toki Pona Dictionary</h1>
-    <!-- Search Bar -->
+    <h3>Search:</h3>
     <div class="search-bar">
       <input type="text" id="searchInput" class="search-input" placeholder="Search Toki Pona or English">
       <button onclick="searchDictionary()" class="search-button">Search</button>
@@ -82,7 +95,7 @@
     <ul class="change-font">
       <div>
 <li><strong>a</strong> - (interjection) ah! ha! ooh! aw!</li>
-<li><strong>akesi</strong> - amphibian, reptile</li>
+<li><strong>akesi</strong> - amphibian, reptile (see <strong>soweli</strong>)</li>
 <li><strong>ala</strong> - no, not, none, un-; (modifier negating a verb)</li>
 <li><strong>alasa</strong> - to hunt, gather; to forage; to search for; to collect</li>
 <li><strong>ale</strong> - everything, anything, life, the universe</li>
@@ -103,7 +116,7 @@
 <li><strong>jan</strong> - person, people, someone, anyone</li>
 <li><strong>jelo</strong> - yellow, yellowish</li>
 <li><strong>jo</strong> - to have, own, possess; to contain</li>
-<li><strong>kala</strong> - fish, sea creature</li>
+<li><strong>kala</strong> - fish, sea creature (see <strong>soweli</strong>)</li>
 <li><strong>kalama</strong> - sound, noise; to make noise</li>
 <li><strong>kama</strong> - to come, arrive, happen; to bring about; to cause</li>
 <li><strong>kasi</strong> - plant, leaf, herb, tree, wood</li>
@@ -175,7 +188,7 @@
 <li><strong>pilin</strong> - to feel, sense; feelings, thoughts</li>
 <li><strong>pimeja</strong> - black, dark</li>
 <li><strong>pini</strong> - completed, finished, past, done; to stop, end, close</li>
-<li><strong>pipi</strong> - insect, bug, ant</li>
+<li><strong>pipi</strong> - insect, bug, ant (see <strong>soweli</strong>)</li>
 <li><strong>poka</strong> - side, hip; next to, nearby</li>
 <li><strong>poki</strong> - container, box, bowl, cup, glass</li>
 <li><strong>pona</strong> - good, simple, positive; to fix, repair, make good</li>
@@ -211,7 +224,7 @@
 <li><strong>utala</strong> - conflict, fight, competition; to compete, to struggle</li>
 <li><strong>walo</strong> - white, light-colored</li>
 <li><strong>wan</strong> - one, unit, element; to unite, make one</li>
-<li><strong>waso</strong> - bird, flying creature</li>
+<li><strong>waso</strong> - bird, flying creature (see <strong>soweli</strong>)</li>
 <li><strong>wawa</strong> - energy, strength, power; strong, fierce, confident</li>
 <li><strong>weka</strong> - away, absent, missing, to remove</li>
 <li><strong>wile</strong> - to want, need, wish, have to, must; to be necessary</li>
@@ -221,7 +234,7 @@
     <p><a href="index.html">Back to Main Page</a></p>
   </div>
   <script>
-    var fonts = ['Arial, sans-serif', 'linjaPona']; // Fonts to toggle
+  var fonts = ['Arial, sans-serif', 'linjaPona']; // Fonts to toggle
     var fontSizes = ['18px', '30px']; // Font sizes to toggle
     var fontIndex = 0;
     var sizeIndex = 0;
@@ -239,19 +252,23 @@
     }
 
     // Function to handle search
-    function searchDictionary() {
-      var searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      var listItems = document.querySelectorAll('.change-font li');
-      
-      for (var i = 0; i < listItems.length; i++) {
-        var itemText = listItems[i].textContent.toLowerCase();
-        if (itemText.includes(searchTerm)) {
-          listItems[i].style.display = 'block'; // Show matching items
-        } else {
-          listItems[i].style.display = 'none'; // Hide non-matching items
-        }
+ function searchDictionary() {
+    var searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+    var listItems = document.querySelectorAll('.change-font li');
+
+    listItems.forEach(function(item) {
+      var strongElement = item.querySelector('strong');
+      var itemText = strongElement.textContent.trim().toLowerCase();
+
+      // Hide all items first
+      item.style.display = 'none';
+
+      // Check if the item text exactly matches the search term or contains the reference "(see [toki pona word])"
+      if (itemText === searchTerm || itemText.includes('(see "' + searchTerm + '")')) {
+        item.style.display = 'block';
       }
-    }
+    });
+  }
   </script>
 </body>
 </html>
