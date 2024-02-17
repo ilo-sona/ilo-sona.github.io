@@ -275,8 +275,8 @@
       // Hide all items first
       item.style.display = 'none';
 
-      // Check if the item text exactly matches the search term or is part of it
-      if (itemText === searchTerm || itemText.includes(' ' + searchTerm)) {
+      // Check if the item text starts with the search term or is the whole word
+      if (itemText.startsWith(searchTerm) || itemText === searchTerm) {
         item.style.display = 'block';
       }
     });
