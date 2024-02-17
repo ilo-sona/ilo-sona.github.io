@@ -253,7 +253,7 @@
     }
 
     // Function to handle search
- function searchDictionary() {
+  function searchDictionary() {
     var searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
     var listItems = document.querySelectorAll('.change-font li');
 
@@ -261,12 +261,19 @@
       var strongElement = item.querySelector('strong');
       var itemText = strongElement.textContent.trim().toLowerCase();
 
+      // Show all items if search term is empty
+      if (searchTerm === '') {
+        item.style.display = 'block';
+        return; // Exit the loop for this iteration
+      }
+
       // Hide all items first
       item.style.display = 'none';
 
       // Check if the item text exactly matches the search term
       if (itemText === searchTerm) {
         item.style.display = 'block';
+        return; // Exit the loop for this iteration
       }
 
       // Check if the item contains the search term within the HTML content
