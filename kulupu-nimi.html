@@ -275,14 +275,8 @@
       // Hide all items first
       item.style.display = 'none';
 
-      // Check if the item text exactly matches the search term
-      if (itemText === searchTerm) {
-        item.style.display = 'block';
-        return; // Exit the loop for this iteration
-      }
-
-      // Check if the item contains the search term within the HTML content
-      if (item.innerHTML.toLowerCase().includes('<strong>' + searchTerm + '</strong>')) {
+      // Check if the item text exactly matches the search term or is part of it
+      if (itemText === searchTerm || itemText.includes(' ' + searchTerm)) {
         item.style.display = 'block';
       }
     });
