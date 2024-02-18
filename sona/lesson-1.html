@@ -70,4 +70,23 @@
     <p>Start your Toki Pona journey today!</p>
   </div>
 </body>
+  <script>
+      <script>
+  var fonts = ['Arial, sans-serif', 'linjaPona']; // Fonts to toggle
+    var fontSizes = ['18px', '30px']; // Font sizes to toggle
+    var fontIndex = 0;
+    var sizeIndex = 0;
+
+    function linjaPona() {
+      var strongElements = document.querySelectorAll('.change-font strong');
+      for (var i = 0; i < strongElements.length; i++) {
+        strongElements[i].style.fontFamily = fonts[fontIndex]; // Change font
+        strongElements[i].style.fontSize = fontSizes[sizeIndex]; // Change font size
+      }
+      
+      // Toggle to the next font and size
+      fontIndex = (fontIndex + 1) % fonts.length;
+      sizeIndex = (sizeIndex + 1) % fontSizes.length;
+    }
+  </script>
 </html>
