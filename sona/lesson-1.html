@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ilo sona - Lesson 1</title>
   <style>
-      @font-face {
-    font-family: 'linjaPona';
-    src: url("/nasin-nanpa-3.1.0.otf") format("opentype");
-    /* Add other font formats and font properties as needed */
-  }
+    @font-face {
+      font-family: 'linjaPona';
+      src: url("/nasin-nanpa-3.1.0.otf") format("opentype");
+      /* Add other font formats and font properties as needed */
+    }
     /* Styling for black-themed layout */
     body {
       font-family: Arial, sans-serif;
@@ -51,7 +51,7 @@
     .container ul {
       color: #eee;
     }
-        #toggleScriptBtn {
+    #toggleScriptBtn {
       position: fixed;
       bottom: 20px; /* Adjust the distance from the bottom as needed */
       right: 20px; /* Adjust the distance from the left as needed */
@@ -66,32 +66,30 @@
   <nav>
     <a href="/">tomo (Home)</a>
     <a href="/sona/">sona (Lessons)</a>
-    <a href="/kulupu-nimi.html">kulupu nimi (Dictionary)</a>
-    <a href="/ijo-pona.html">ijo pona (Games)</a>
+    <a href="kulupu-nimi.html">kulupu nimi (Dictionary)</a>
+    <a href="ijo-pona.html">ijo pona (Games)</a>
   </nav>
   <div class="container">
-<ul class="change-font">
-  <strong>mi toki tawa sina. sina sona e ni anu seme</strong>
-</ul>
+    <ul class="change-font">
+      <strong>mi toki tawa sina. sina sona e ni anu seme</strong>
+    </ul>
   </div>
-<button id="toggleScriptBtn" onclick="linjaPona()">Toggle Scripts</button>
-</body>
-      <script>
-  var fonts = ['Arial, sans-serif', 'linjaPona']; // Fonts to toggle
-    var fontSizes = ['18px', '30px']; // Font sizes to toggle
-    var fontIndex = 0;
-    var sizeIndex = 0;
+  <button id="toggleScriptBtn" onclick="toggleFont()">Toggle Fonts</button>
+  <script>
+    var defaultFontFamily = 'linjaPona'; // Default font family
+    var alternativeFontFamily = 'Arial, sans-serif'; // Alternative font family
 
-    function linjaPona() {
+    function toggleFont() {
       var strongElements = document.querySelectorAll('.change-font strong');
       for (var i = 0; i < strongElements.length; i++) {
-        strongElements[i].style.fontFamily = fonts[fontIndex]; // Change font
-        strongElements[i].style.fontSize = fontSizes[sizeIndex]; // Change font size
+        var currentFont = strongElements[i].style.fontFamily || window.getComputedStyle(strongElements[i]).fontFamily;
+        if (currentFont === defaultFontFamily) {
+          strongElements[i].style.fontFamily = alternativeFontFamily;
+        } else {
+          strongElements[i].style.fontFamily = defaultFontFamily;
+        }
       }
-      
-      // Toggle to the next font and size
-      fontIndex = (fontIndex + 1) % fonts.length;
-      sizeIndex = (sizeIndex + 1) % fontSizes.length;
     }
   </script>
+</body>
 </html>
