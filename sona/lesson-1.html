@@ -83,10 +83,15 @@
       var strongElements = document.querySelectorAll('.change-font strong');
       for (var i = 0; i < strongElements.length; i++) {
         var currentFont = strongElements[i].style.fontFamily || window.getComputedStyle(strongElements[i]).fontFamily;
+        var currentFontSize = strongElements[i].style.fontSize || window.getComputedStyle(strongElements[i]).fontSize;
+        
         if (currentFont === defaultFontFamily) {
           strongElements[i].style.fontFamily = alternativeFontFamily;
+          // Resetting font size to avoid the small font issue
+          strongElements[i].style.fontSize = 'inherit';
         } else {
           strongElements[i].style.fontFamily = defaultFontFamily;
+          strongElements[i].style.fontSize = 'inherit';
         }
       }
     }
